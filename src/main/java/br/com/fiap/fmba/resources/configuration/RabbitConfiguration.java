@@ -1,8 +1,5 @@
 package br.com.fiap.fmba.resources.configuration;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
@@ -15,9 +12,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitConfiguration {
-	
-	@Value("${env}")
-	private final String ENVIROMENT = null;
 	
 	@Value("${${env}.mq.QUEUE_NAME}")
 	private final String QUEUE_NAME = null;
@@ -43,28 +37,13 @@ public class RabbitConfiguration {
 
 	@Bean
 	public ConnectionFactory connectionFactory() {
-		final URI rabbitMqUrl;
-		try {
-			rabbitMqUrl = new URI(this.URI);
-		} catch (URISyntaxException e) {
-			throw new RuntimeException(e);
-		}
 
 		final CachingConnectionFactory factory = new CachingConnectionFactory();
-		if(this.ENVIROMENT.equalsIgnoreCase("P")) {
-			factory.setUsername(rabbitMqUrl.getUserInfo().split(":")[0]);
-			factory.setPassword(rabbitMqUrl.getUserInfo().split(":")[1]);
-			factory.setHost(rabbitMqUrl.getHost());
-			factory.setPort(rabbitMqUrl.getPort());
-			factory.setVirtualHost(rabbitMqUrl.getPath().substring(1));
-		}
-		else {
-			factory.setUsername(this.MQ_USER);
-			factory.setPassword(this.MQ_PASSWORD);
-			factory.setHost(this.MQ_HOST);
-			factory.setPort(Integer.parseInt(this.MQ_PORT));
-			factory.setVirtualHost(this.MQ_V_HOST);
-		}
+		factory.setUsername(this.MQ_USER);
+		factory.setPassword(this.MQ_PASSWORD);
+		factory.setHost(this.MQ_HOST);
+		factory.setPort(Integer.parseInt(this.MQ_PORT));
+		factory.setVirtualHost(this.MQ_V_HOST);
 
 		return factory;
 	}
