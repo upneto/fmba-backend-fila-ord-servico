@@ -1,2 +1,2 @@
-# fmba-backend-fila-ordem-servico
+# fmba-backend-fila-ord-servico
 Fila de processamento assíncrono para ordens de serviço 
