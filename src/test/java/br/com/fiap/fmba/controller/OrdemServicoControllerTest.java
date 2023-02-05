@@ -2,7 +2,6 @@ package br.com.fiap.fmba.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -44,11 +43,11 @@ public class OrdemServicoControllerTest {
 	}
 	
 	static final OrdemServicoRequest REQUEST = OrdemServicoRequest.builder()
-			.id(1L)
-			.cliente(new BigInteger("1"))
-			.dataCriacao(new Date())
-			.dataFinal(new Date())
-			.status(1)				
+			.codigoServico(1L)
+			.nomeDestinatario("TESTE")
+			.dataEnvio(new Date())
+			.dataInicioServico(new Date())
+			.dataFinalServico(new Date())					
 			.build();
 	
 	@TestConfiguration

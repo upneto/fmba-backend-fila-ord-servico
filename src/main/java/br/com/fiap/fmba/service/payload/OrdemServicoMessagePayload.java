@@ -1,11 +1,8 @@
-package br.com.fiap.fmba.controller.payload.ordemservico;
+package br.com.fiap.fmba.service.payload;
 
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class OrdemServicoRequest {
+public class OrdemServicoMessagePayload {
 
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date dataEnvio;	
@@ -36,13 +33,4 @@ public class OrdemServicoRequest {
 	private String marcaVeiculo;
 	private String placaVeiculo;
 	
-	@Override
-	public String toString() {
-		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-		try {
-			return ow.writeValueAsString(this);
-		} catch (JsonProcessingException e) {
-			return "Não foi posível converter objeto para JSON!!!";
-		}
-	}
 }
