@@ -6,7 +6,7 @@ Projeto backend para Fila de processamento assincrono
 
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
 * [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.2.1.RELEASE/maven-plugin/)
-* [Postgres - DataBase](https://www.postgresql.org/)
+* [RabbitMQ](https://www.rabbitmq.com/)
 * [Docker Compose](https://docs.docker.com/compose/)
 
 ### Pré requisitos e configurações
